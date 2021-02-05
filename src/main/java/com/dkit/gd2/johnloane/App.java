@@ -12,7 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        List playerIDS = new ArrayList<>();
+        List playerIDS = new ArrayList<>(1000000);
 
         populateANDTimePlayerIDS(playerIDS);
         timeNonEndInsertionIntoList(playerIDS);

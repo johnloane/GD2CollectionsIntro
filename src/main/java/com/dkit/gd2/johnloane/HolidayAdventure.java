@@ -17,6 +17,7 @@ public class HolidayAdventure
         //insertAndTime(placesToVisit, "Galway");
         insertAndTimeAtPosition(placesToVisit, 0, "Galway");
         printList(placesToVisit);
+        visit(placesToVisit);
 
 
         
@@ -94,7 +95,12 @@ public class HolidayAdventure
     private static void visit(List placesToVisit)
     {
         Scanner keyboard = new Scanner(System.in);
+        final int QUIT = 0;
+        final int FORWARD = 1;
+        final int BACKWARDS = 2;
+        final int PRINTMENU = 3;
         boolean quit = false;
+        boolean goingForward = true;
 
         ListIterator<String> listIterator = placesToVisit.listIterator();
 
@@ -107,8 +113,65 @@ public class HolidayAdventure
         {
             //Essential to call listIterator.next() to link iterator to the list
             System.out.println("Now visiting " + listIterator.next());
-            //printMenu();
+            printMenu();
         }
-        //while....
+        while(!quit)
+        {
+            int action = keyboard.nextInt();
+            keyboard.nextLine();
+
+            switch(action)
+            {
+                case QUIT:
+                    System.out.println("Holiday is over");
+                    quit = true;
+                    break;
+                case FORWARD:
+                    if(!goingForward)
+                    {
+                        if(listIterator.hasNext())
+                        {
+                            listIterator.next();
+                        }
+                        goingForward = true;
+                    }
+                    if(listIterator.hasNext())
+                    {
+                        System.out.println("Now visiting " + listIterator.next());
+                    }
+                    else
+                    {
+                        System.out.println("Reached the end of the list");
+                    }
+                    break;
+                case BACKWARDS:
+                    if(goingForward)
+                    {
+                        if(listIterator.hasPrevious())
+                        {
+                            listIterator.previous();
+                        }
+                        goingForward = false;
+                    }
+                    if(listIterator.hasPrevious())
+                    {
+                        System.out.println("Now visiting " + listIterator.previous());
+                    }
+                    else
+                    {
+                        System.out.println("Reached the start of the list");
+                    }
+                    break;
+                case PRINTMENU:
+                    printMenu();
+                    break;
+            }
+        }
+    }
+
+    private static void printMenu()
+    {
+        System.out.println("Available actions: \n press ");
+        System.out.println("0 - to quit\n" + "1 - to go to the next destination\n" + "2 - to go to the previous destination\n" + "3 to print the menu");
     }
 }
