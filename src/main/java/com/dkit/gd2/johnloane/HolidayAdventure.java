@@ -83,4 +83,32 @@ public class HolidayAdventure
         return true;
 
     }
+
+    //Visit method - should allow you to visit cities
+    //takes in the LinkedList of placeToVisit
+    //quit
+    //go to the next city
+    //go to the previous city
+    //print the options
+
+    private static void visit(List placesToVisit)
+    {
+        Scanner keyboard = new Scanner(System.in);
+        boolean quit = false;
+
+        ListIterator<String> listIterator = placesToVisit.listIterator();
+
+        if(placesToVisit.isEmpty())
+        {
+            System.out.println("Nowhere to go");
+            return;
+        }
+        else
+        {
+            //Essential to call listIterator.next() to link iterator to the list
+            System.out.println("Now visiting " + listIterator.next());
+            //printMenu();
+        }
+        //while....
+    }
 }
