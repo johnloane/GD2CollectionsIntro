@@ -10,7 +10,7 @@ package com.dkit.gd2.johnloane;
     A song must exist on an album before it can be added to the playlist
     Also allow removal of songs from the playlist
  */
-public class SpotifyPlayLIst
+public class SpotifyPlayList
 {
 
 }
